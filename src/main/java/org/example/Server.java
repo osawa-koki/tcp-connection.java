@@ -29,27 +29,23 @@ public class Server extends Thread {
               writer.println("HTTP/1.1 200 OK");
               writer.println("Content-Type: text/plain; charset=utf-8");
               writer.println("");
-              writer.println("Hello, World!");
 
-//              while (true) {
-//                System.out.println("=====> クライアントからの受取待ち...");
-//                line = reader.readLine();
-//                System.out.println("=====> クライアントからの受取：" + line);
-//                if (line == null) {
-//                  System.out.println("=====> クライアントとの通信が切断されました。");
-//                  break;
-//                }
-//                writer.println("Hello, World!");
-//              }
-
+              while (true) {
+                line = reader.readLine();
+                System.out.println("=====> " + line);
+                writer.println(line);
+                if (line.isEmpty()) break;
+              }
               System.out.println("=====> クライアントとの通信が終了しました。");
             } catch (Exception e) {
               e.printStackTrace();
             } finally {
               // リソースの解放。
+              System.out.println("=====> クライアントとの接続を閉じます。");
               if (reader != null) reader.close();
               if (writer != null) writer.close();
               if (sc != null) sc.close();
+              System.out.println("=====> クライアントとの接続を閉じました。");
             }
           } catch (Exception ex) {
             ex.printStackTrace();
