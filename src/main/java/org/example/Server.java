@@ -17,6 +17,7 @@ public class Server extends Thread {
             System.out.println("=====> クライアントからの接続がありました。");
             BufferedReader reader = null;
             PrintWriter writer = null;
+
             try {
               reader = new BufferedReader(new InputStreamReader(sc.getInputStream()));
               writer = new PrintWriter(sc.getOutputStream(), true);
@@ -26,11 +27,10 @@ public class Server extends Thread {
               writer.println("Content-Type: text/plain; charset=utf-8");
               writer.println("");
 
-              while (true) {
+              while (reader.ready()) {
                 line = reader.readLine();
                 System.out.println("=====> " + line);
                 writer.println(line);
-                if (line.isEmpty()) break;
               }
               System.out.println("=====> クライアントとの通信が終了しました。");
             } catch (Exception e) {
