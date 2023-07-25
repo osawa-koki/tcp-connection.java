@@ -27,12 +27,13 @@ public class Server extends Thread {
               writer.println("Content-Type: text/plain; charset=utf-8");
               writer.println("");
 
+              System.out.println("🔴 Server: (request)");
               while (reader.ready()) {
                 line = reader.readLine();
-                System.out.println("=====> " + line);
+                System.out.println("🔴 Server: " + line);
                 writer.println(line);
               }
-              System.out.println("=====> クライアントとの通信が終了しました。");
+              System.out.println("🔴 Server: (EOF)");
             } catch (Exception e) {
               e.printStackTrace();
             } finally {
