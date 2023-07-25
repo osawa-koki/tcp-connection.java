@@ -13,4 +13,4 @@ jobs:
       - name: Build the Docker image
         run: docker build -t tcp-connection-java .
       - name: Exec java program
-        run: docker run -it --rm --name tcp-connection-java tcp-connection-java
+        run: docker run --rm --name tcp-connection-java tcp-connection-java
