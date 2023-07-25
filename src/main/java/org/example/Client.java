@@ -26,7 +26,8 @@ public class Client {
       writer.flush();
 
       String line = null;
-      while ((line = reader.readLine()) != null) {
+      while (reader.ready()) {
+        line = reader.readLine();
         System.out.println("🔵 Client: " + line);
       }
     } catch (Exception e) {
