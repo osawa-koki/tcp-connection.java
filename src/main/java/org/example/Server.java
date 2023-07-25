@@ -10,10 +10,6 @@ public class Server extends Thread {
   public void run() {
     try {
       System.out.println("===== Server started! =====");
-
-      // -----------------------------------------
-      // 1.TCPポートを指定してサーバソケットを作成
-      // -----------------------------------------
       try (ServerSocket server = new ServerSocket(8000)) {
         while (true) {
           try {
@@ -55,7 +51,6 @@ public class Server extends Thread {
       } catch (Exception e) {
         e.printStackTrace();
       }
-
       System.out.println("===== Server stopped! =====");
     } catch (Exception e) {
       e.printStackTrace();
