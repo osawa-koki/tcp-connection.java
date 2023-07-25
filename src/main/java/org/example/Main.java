@@ -13,12 +13,14 @@ public class Main {
     try {
       Server server = new Server();
       server.start();
-      System.out.println("start...");
 
-      // 待機する。
-      server.join();
-      System.out.println("all completed!");
-    } catch (InterruptedException e) {
+      Client.run();
+
+      System.out.println("All completed!");
+
+      // プログラムを終了する。
+      System.exit(0);
+    } catch (Exception e) {
       e.printStackTrace();
     }
   }
